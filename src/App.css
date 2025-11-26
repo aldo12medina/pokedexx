@@ -1,0 +1,174 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ----------------------------- */
+/* App custom styles (Pokédex)  */
+/* ----------------------------- */
+
+:root{
+  --bg-1: #f5f7fa;
+  --bg-2: #e6eef8;
+  --accent: #ffcb05; /* amarillo Pokémon */
+  --muted: #6b7280;
+  --card-shadow: 0 6px 18px rgba(16,24,40,0.08);
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  color: #0f172a;
+}
+
+/* Increased base typography and larger, more tappable buttons */
+html, body { font-size: 16px; }
+.button { font-size: 1rem; padding: 12px 18px; border-radius: 10px; }
+.button.is-success, .button.is-primary, .button.is-info, .button.is-danger { box-shadow: 0 8px 24px rgba(2,6,23,0.08); }
+.title.is-3 { font-size: 1.6rem; }
+.label { font-size: 1rem; }
+.input, .textarea { font-size: 0.99rem; }
+
+.container.p-5 {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 28px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.07);
+}
+
+.title.is-1 {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-bottom: 18px;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform .16s ease, box-shadow .16s ease;
+  box-shadow: var(--card-shadow);
+  background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+}
+
+.card-image .image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* mantiene recorte elegante en las tarjetas */
+  display: block;
+  background: linear-gradient(90deg, #f0f6ff, #fff);
+}
+
+/* Estilos para la tarjeta principal (activo) - mostrar la imagen completa centrada */
+.active-card .card-image { display:flex; align-items:center; justify-content:center; padding: 12px; }
+.active-card .card-image .image { width: 100%; }
+.active-card .card-image .image img {
+  object-fit: contain; /* mostrar la imagen completa sin recortar */
+  max-width: 100%;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.card-content { padding: 16px 18px; }
+.card-content .title { margin-bottom: 6px; color: #062a43; }
+.card-content .subtitle { color: var(--muted); margin-bottom: 10px; }
+.card-content .is-size-7 { color: #334155; }
+
+.buttons { display: flex; gap: 8px; }
+
+.button.is-primary { background: linear-gradient(90deg,#3b82f6,#2563eb); border: none; color: #fff; }
+.button.is-info { background:#06b6d4; color:#fff; border:none }
+.button.is-danger { background:#ef4444; color:#fff; border:none }
+
+/* Form styles */
+.field .label{ color: #0b3a66; font-weight:600 }
+.input, .textarea { border: 1px solid #e6eef8; border-radius: 8px; padding: 10px; box-shadow:none }
+.input:focus, .textarea:focus { outline: none; border-color: #9bd1ff; box-shadow: 0 6px 18px rgba(37,99,235,0.08) }
+
+.notification.is-danger { background: #fff5f5; color:#7f1d1d; border-radius:8px }
+
+/* Responsive tweaks */
+@media (max-width: 640px){
+  .card-image .image img { height: 160px; }
+  .container.p-5 { padding: 18px; margin: 12px; }
+}
+
+/* Utility */
+.has-text-centered { text-align: center }
+
+/* Carousel styles */
+.carousel { position: relative; width: 100%; overflow: hidden; border-radius: 10px; margin: 12px 0; }
+.carousel-track { display: flex; transition: transform .45s ease; will-change: transform; }
+.carousel-slide { min-width: 100%; flex: 0 0 100%; display:flex; align-items:center; justify-content:center; background: #fff; }
+.carousel-slide img {
+  max-width: 100%;
+  max-height: 360px;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* muestra la imagen completa, manteniendo proporción */
+  display: block;
+  margin: 0 auto; /* centrar horizontalmente */
+}
+.carousel-controls { position: relative; display:flex; align-items:center; justify-content:space-between; margin-top:8px }
+.carousel-prev, .carousel-next { background: rgba(11,58,102,0.08); border: none; padding: 6px 10px; border-radius:6px; cursor:pointer }
+.carousel-indicators { display:flex; gap:8px; align-items:center; justify-content:center; flex:1 }
+.carousel-indicators .dot { width:10px; height:10px; border-radius:50%; background: #cbd5e1; border: none; cursor:pointer }
+.carousel-indicators .dot.active { background: #0b3a66 }
+
+@media (max-width:640px){
+  .carousel-slide img { max-height: 220px }
+  .card-image .image img { height: 160px }
+}
+
+
