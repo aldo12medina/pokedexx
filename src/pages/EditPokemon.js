@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
 // !!! AJUSTA ESTA URL a tu entorno local o hosting !!!
-const API_URL = 'http://localhost/pokedexes/api/pokemons.php';
+const API_URL = 'https://cors-anywhere.herokuapp.com/https://pokedex12.infinityfreeapp.com/api/pokemons.php';
+
 
 const EditPokemon = () => {
     const navigate = useNavigate();
